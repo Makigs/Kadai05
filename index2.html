@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>笑顔トレーニング（改良版）</title>
+<style>
+  #cameraArea {
+    position: relative;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  #canvas {
+    position: absolute;
+    left: 0;
+  }
+  #emoticonBar {
+    position: absolute;
+    top: 0;
+    right: -30px;
+    width: 40px;
+    height: 480px;
+    border-right: #DDD solid 6px;
+  }
+  #emoticon {
+    position: absolute;
+    bottom: 0;
+    right: -24px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #CCC;
+    text-align: center;
+    font-size: 24px;
+    line-height: 40px;
+    transform: rotate(90deg);
+    transition: bottom 0.3s;
+  }
+  .view{
+    text-align: center;
+  }
+  .disable{
+    visibility: hidden;
+  }
+</style>
+</head>
+<body>
+<main>
+    <div id="cameraArea">
+        <video id="camera" width="640" height="480" playsinline muted autoplay></video>
+        <canvas id="canvas"></canvas>
+        <div id="emoticonBar"><span id="emotion">:|</span></div>
+    </div>
+    <div class="view">
+        <div class="status disable">・・・表情認識中・・・</div>
+        <button class="start">スタート</button>
+        <button class="stop">ストップ</button>
+        <div class="target">笑顔回数：<p class="targetView">0</p>回目</div>
+    </div>
+    <textarea id="request_text" cols="100" rows="3">
+    </textarea>
+    <br />
+    <input type="button" id="button1" onClick="reply1()" value="おばちゃんに話しかける" />
+    <input type="button" id="button2" onClick="reply2()" value="お姉さんに話しかける" />
+
+    <br /><br />
+    <textarea id="response_text" cols="100" rows="3" disabled>
+    </textarea>
+
+    <div id="test"></div>
+    <button id="bn">test</button>
+
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="js/face-api.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
